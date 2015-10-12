@@ -1,7 +1,7 @@
 angular.module('bluevoo.controllers')
 
 .controller('ProfileCtrl', function($scope) {
-  $scope.user = {
+  $scope.existingUser = {
     name : 'Hans Wurst',
     businessUnit : 'IBM Analytics',
     ibmLocation : 'Frankfurt',

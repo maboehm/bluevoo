@@ -1,6 +1,6 @@
 angular.module('bluevoo.controllers')
 
-.controller('MapCtrl', function($scope, uiGmapGoogleMapApi) {
+.controller('MapCtrl', function(uiGmapGoogleMapApi, $scope, UserSvc) {
   $scope.map = {
     center: {
       latitude: 48.6640875,
@@ -11,4 +11,10 @@ angular.module('bluevoo.controllers')
   uiGmapGoogleMapApi.then(function(maps) {
     console.log(maps);
   });
+
+  $scope.test = function test() {
+    UserSvc.getUser().then(function(user) {
+      $scope.user = user;
+    });
+  };
 });

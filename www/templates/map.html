@@ -5,5 +5,19 @@
       Hier kommt ist eine Karte von Google.
       <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
     </p>
+    <button class="button" ng-click="test()">Teste mich</button>
+    <div ng-show="user">
+
+      <h1>{{user.name}}</h1>
+      <h2>Business Tags</h2>
+      <ul>
+        <li ng-repeat="tag in user.businessTags">
+          {{tag}}
+        </li>
+      </ul>
+      <pre>
+      {{user|json}}
+    </pre>
+    </div>
   </ion-content>
 </ion-view>

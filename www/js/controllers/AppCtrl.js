@@ -1,4 +1,4 @@
-angular.module('bluevoo.controllers', [])
+angular.module('bluevoo.controllers')
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   $scope.loginData = {};

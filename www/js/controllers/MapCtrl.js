@@ -1,4 +1,4 @@
-angular.module('bluevoo')
+angular.module('bluevoo.controllers')
 
 .controller('MapCtrl', function($scope, uiGmapGoogleMapApi) {
   $scope.map = {

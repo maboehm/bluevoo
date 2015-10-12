@@ -1,6 +1,6 @@
 {
   "name": "Bluevoo",
-  "app_id": "",
+  "app_id": "a544a3c7",
   "gulpStartupTasks": [
     "sass",
     "watch"

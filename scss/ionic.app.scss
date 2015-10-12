@@ -23,3 +23,8 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .angular-google-map-container {
   height: 400px;
 }
+
+.autocomplete,
+auto-complete {
+  z-index: 100;
+}

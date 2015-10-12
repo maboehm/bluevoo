@@ -1,0 +1,17 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">{{tagCategory}}</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeModal()">Done</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <tags-input ng-show="tagCategory === 'Business Tags'"add-on-paste="true" ng-model="existingUser.businessTags">
+      <auto-complete source="loadTags($query)"></auto-complete>
+    </tags-input>
+
+    <tags-input ng-show="tagCategory === 'Private Tags'" add-on-paste="true" ng-model="existingUser.privateTags">
+      <auto-complete source="loadTags($query)"></auto-complete>
+    </tags-input>
+  </ion-content>
+</ion-modal-view>

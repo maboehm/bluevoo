@@ -1,0 +1,28 @@
+<ion-view view-title="Profile">
+  <ion-content>
+    <h1>My Profile</h1>
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="{{user.name}}">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Business unit</span>
+        <input type="text" placeholder="{{user.businessUnit}}">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">IBM location</span>
+        <input type="text" placeholder="{{user.ibmLocation}}">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Business tags</span>
+        <input type="text" placeholder="{{user.businessTags}}">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Private tags</span>
+        <input type="text" placeholder="{{user.privateTags}}">
+      </label>
+    </div>
+    <button class="button button-block button-positive" ng-click="updateProfile()">Update</button>
+  </ion-content>
+</ion-view>

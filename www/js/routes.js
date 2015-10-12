@@ -6,15 +6,6 @@ angular.module('bluevoo').config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
-    .state('app.map', {
-      url: '/map',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/map.html',
-          controller: 'MapCtrl'
-        }
-      }
-    })
     .state('app.checkin', {
       url: '/checkin',
       views: {
@@ -30,6 +21,24 @@ angular.module('bluevoo').config(function($stateProvider, $urlRouterProvider) {
         'menuContent': {
           templateUrl: 'templates/nearme.html',
           controller: 'NearmeCtrl'
+        }
+      }
+    })
+    .state('app.map', {
+      url: '/map',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/map.html',
+          controller: 'MapCtrl'
+        }
+      }
+    })
+    .state('app.profile', {
+      url: '/profile',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/profile.html',
+          controller: 'ProfileCtrl'
         }
       }
     });

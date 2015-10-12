@@ -19,6 +19,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 $dark: #152935;
 $stable: #5AAAFA;
+$balanced: #4B8400;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
@@ -36,7 +37,7 @@ auto-complete {
   &success {
     background-color: #4B8400 !important;
   }
-  $error {
+  &error {
     background-color: #E71D32 !important;
   }
 }

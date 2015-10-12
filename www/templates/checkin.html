@@ -1,8 +1,22 @@
-<ion-view view-title="Checkin">
+<ion-view view-title="Check-in">
   <ion-content>
-    <h1>Check-in</h1>
-    <p>
-      {{text}}
-    </p>
+    <form class="list list-inset" ng-submit="doCheckin()">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Standorttyp
+        </div>
+        <select ng-model="checkin.type" ng-options="type for type in types"></select>
+      </label>
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Ort
+        </div>
+        <select ng-model="checkin.place" ng-change="placeChanged()" ng-options="place for place in places">
+        </select>
+      </label>
+
+      <button class="button button-block button-balanced" type="submit">Check-In!</button>
+    </form>
   </ion-content>
 </ion-view>

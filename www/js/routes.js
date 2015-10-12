@@ -14,6 +14,24 @@ angular.module('bluevoo').config(function($stateProvider, $urlRouterProvider) {
           controller: 'MapCtrl'
         }
       }
+    })
+    .state('app.checkin', {
+      url: '/checkin',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/checkin.html',
+          controller: 'CheckinCtrl'
+        }
+      }
+    })
+    .state('app.nearme', {
+      url: '/nearme',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/nearme.html',
+          controller: 'NearmeCtrl'
+        }
+      }
     });
 
   // if none of the above states are matched, use this as the fallback

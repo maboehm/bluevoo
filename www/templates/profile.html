@@ -4,7 +4,7 @@
       <div class="list">
         <label class="item item-input item-floating-label">
           <span class="input-label">Name</span>
-          <input ng-model="existingUser.name" type="text">
+          <input ng-model="existingUser.username" type="text">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Business unit</span>
@@ -16,11 +16,11 @@
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Business tags</span>
-          <input placeholder="{{existingUser.businessTags}}" ng-click="openBusinessTags()" type="text">
+          <input ng-model="existingUser.businessTags" ng-click="openBusinessTags()" type="text" placeholder="Business Tags">
         </label>
         <label class="item item-input item-floating-label">
           <span class="input-label">Private tags</span>
-          <input placeholder="{{existingUser.privateTags}}" ng-click="openPrivateTags()"type="text">
+          <input ng-model="existingUser.privateTags" ng-click="openPrivateTags()" type="text" placeholder="Private Tags">
         </label>
       </div>
       <button class="button button-block button-positive" type="submit">Update profile</button>

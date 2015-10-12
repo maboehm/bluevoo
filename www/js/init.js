@@ -1,5 +1,5 @@
 angular.module('bluevoo')
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $cookies, TagSvc) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -13,4 +13,6 @@ angular.module('bluevoo')
       StatusBar.styleDefault();
     }
   });
+  $rootScope.userId = $cookies.get('userId');
+  TagSvc.init();
 });

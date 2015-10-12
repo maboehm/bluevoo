@@ -1,20 +1,10 @@
 <ion-view view-title="Karte">
   <ion-content>
-    <h1>Karte</h1>
-    <p>
-      Hier kommt ist eine Karte von Google.
-      <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
-    </p>
-    <button class="button" ng-click="test()">Teste mich</button>
-    <div ng-show="user">
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
 
-      <h1>{{user.name}}</h1>
-      <h2>Business Tags</h2>
-      <ul>
-        <li ng-repeat="tag in user.businessTags">
-          {{tag}}
-        </li>
-      </ul>
+    <hr>
+    <button class="button" ng-click="test()">Teste mich</button>
+    <div>
       <pre>
       {{user|json}}
     </pre>

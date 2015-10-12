@@ -33,6 +33,9 @@ angular.module('bluevoo').config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.map.login', {
+      url: '/login'
+    })
     .state('app.profile', {
       url: '/profile',
       views: {

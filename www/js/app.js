@@ -2,6 +2,7 @@
 angular.module('bluevoo',
   [
     'ionic',
+    'ngCookies',
 
     'bluevoo.controllers',
     'bluevoo.services',

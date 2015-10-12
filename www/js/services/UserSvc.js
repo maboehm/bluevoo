@@ -1,11 +1,11 @@
 angular.module('bluevoo.services')
 
-.service('UserSvc', function($http, $q, c) {
+.service('UserSvc', function($http, $q, $cookies, $rootScope, c) {
   var _this = this;
 
   var testData = {
     existingUser: {
-      name: 'Hans Wurst',
+      username: 'Hans Wurst',
       businessUnit: 'IBM Analytics',
       ibmLocation: 'Frankfurt',
       businessTags: ['bpm', 'mobile', 'bluemix'],
@@ -17,7 +17,7 @@ angular.module('bluevoo.services')
   _this.getUser = function getUser(id) {
     var deferred = $q.defer();
 
-    $http.get(c.url + testData.id)
+    $http.get(c.url + id)
       .then(function success(response) {
         deferred.resolve(response.data);
       }, function onError(err) {
@@ -29,10 +29,24 @@ angular.module('bluevoo.services')
   };
 
   _this.getOwnProfile = function getOwnProfile() {
-    var deferred = $q.defer();
+    return _this.getUser($rootScope.userId);
+  };
 
-    deferred.resolve(testData.existingUser);
+  _this.updateUser = function updateUser(user) {
+    var deferred = $q.defer();
+    var template = {
+      type: "user2",
+    };
+
+    $http.post(c.url, _.merge(user, template)).then(function(response) {
+      $cookies.put('userId', response.data.id);
+      deferred.resolve(response.data);
+    });
 
     return deferred.promise;
+  };
+
+  _this.createUser = function createUser(user) {
+    return _this.updateUser(user);
   };
 });

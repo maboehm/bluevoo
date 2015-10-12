@@ -1,48 +1,68 @@
 angular.module('bluevoo.controllers')
 
-.controller('ProfileCtrl', function($scope, $ionicModal, UserSvc) {
+.controller('ProfileCtrl', function($scope, $ionicModal, $ionicPopup, $state, $ionicHistory, TagSvc, UserSvc) {
+  var modalScope = $scope.$new(true);
+  var availableTags = [];
+  modalScope.tags = {};
+
   $scope.getOwnProfile = function getOwnProfile() {
     UserSvc.getOwnProfile().then(function(user) {
       $scope.existingUser = user;
-      console.log('Nutzer geladen');
     });
   };
-
   $scope.updateProfile = function updateProfile() {
-
+    UserSvc.updateUser($scope.existingUser);
   };
 
   $scope.openBusinessTags = function openBusinessTags() {
-      $scope.modal.show();
-      $scope.tagCategory = 'Business Tags';
+    $scope.modal.show();
+    modalScope.tagCategory = 'Business Tags';
+    modalScope.tags.tags = $scope.existingUser.businessTags;
+    availableTags = TagSvc.businessTags;
   };
   $scope.openPrivateTags = function openPrivateTags() {
-      $scope.modal.show();
-      $scope.tagCategory = 'Private Tags';
+    $scope.modal.show();
+    modalScope.tagCategory = 'Private Tags';
+    modalScope.tags.tags = $scope.existingUser.privateTags;
+    availableTags = TagSvc.privateTags;
   };
 
   $ionicModal.fromTemplateUrl('templates/autocomplete.html', {
-    scope: $scope
+    scope: modalScope
   }).then(function(modal) {
     $scope.modal = modal;
   });
-
-  // Triggered in the login modal to close it
-  $scope.closeModal = function() {
+  modalScope.closeModal = function() {
     $scope.modal.hide();
-    console.log($scope.existingUser.businessTags);
-    //$scope.existingUser.businessTags = angular.copy($scope.tags);
+    var formatted = _.map(modalScope.tags.tags, function(tag) {
+      return tag.text.toLowerCase();
+    });
+    if (modalScope.tagCategory === 'Business Tags') {
+      $scope.existingUser.businessTags = formatted;
+    } else {
+      $scope.existingUser.privateTags = formatted;
+    }
   };
 
-  $scope.loadBusinessTags = function loadBusinessTags(query) {
-    arr = ['bpm', 'mobile', 'bluemix'];
-
-    return _.filter(arr, function(tag) {
-      return tag.search(query) > -1;
+  modalScope.loadSuggestions = function loadSuggestions(query) {
+    return _.filter(availableTags, function(tag) {
+      return tag.search(query.toLowerCase()) > -1;
     });
   };
 
   $scope.$on('$ionicView.beforeEnter', function() {
+    if (!$scope.userId) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'You shouldn\'t be here',
+        template: 'You need to have a profile to edit one.'
+      });
+      alertPopup.then(function(res) {
+        $ionicHistory.nextViewOptions({
+          historyRoot: true
+        });
+        $state.go('app.map.login');
+      });
+    }
     $scope.getOwnProfile();
   });
 });

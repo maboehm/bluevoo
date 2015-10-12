@@ -8,5 +8,11 @@
   "watchPatterns": [
     "www/**/*",
     "!www/lib/**/*"
+  ],
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://9b8ae9df-db6e-44dc-a427-4ef7f194ff97-bluemix.cloudant.com/bluevoo/"
+    }
   ]
 }

@@ -1,7 +1,7 @@
 angular.module('bluevoo.controllers')
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
-  $scope.loginData = {};
+  $scope.newUser = {};
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/signup.html', {
@@ -22,7 +22,7 @@ angular.module('bluevoo.controllers')
 
   // Perform the login action when the user submits the login form
   $scope.doSignup = function() {
-    console.log('Doing login', $scope.loginData);
+    console.log('Doing login', $scope.newUser);
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system

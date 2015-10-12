@@ -1,12 +1,14 @@
 // Dependencies
-angular.module('bluevoo',
-  [
-    'ionic',
-    'ngCookies',
+angular.module('bluevoo', [
+  'ionic',
+  'ngCookies',
 
-    'bluevoo.controllers',
-    'bluevoo.services',
+  'ngTagsInput',
+  'ngGeolocation',
+  'uiGmapgoogle-maps',
+  'ionic-toast',
+  'toastr',
 
-    'ngTagsInput',
-    'uiGmapgoogle-maps'
- ]);
+  'bluevoo.controllers',
+  'bluevoo.services'
+]);

@@ -1,6 +1,6 @@
 angular.module('bluevoo.controllers')
 
-.controller('ProfileCtrl', function($scope, $ionicModal, $ionicPopup, $state, $ionicHistory, TagSvc, UserSvc) {
+.controller('ProfileCtrl', function($scope, $ionicModal, $ionicPopup, $state, $ionicHistory, toastr, TagSvc, UserSvc) {
   var modalScope = $scope.$new(true);
   var availableTags = [];
   modalScope.tags = {};
@@ -11,7 +11,12 @@ angular.module('bluevoo.controllers')
     });
   };
   $scope.updateProfile = function updateProfile() {
-    UserSvc.updateUser($scope.existingUser);
+    UserSvc.updateUser($scope.existingUser).then(function() {
+       //ionicToast.show('Profile Updated Successfully.', 'bottom', false, 2500);
+       toastr.success('Profile Updated Successfully');
+    }, function() {
+      toastr.error('Something went wrong');
+    });
   };
 
   $scope.openBusinessTags = function openBusinessTags() {

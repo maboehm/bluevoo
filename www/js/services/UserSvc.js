@@ -41,6 +41,8 @@ angular.module('bluevoo.services')
     $http.post(c.url, _.merge(user, template)).then(function(response) {
       $cookies.put('userId', response.data.id);
       deferred.resolve(response.data);
+    }, function() {
+      deferred.reject();
     });
 
     return deferred.promise;

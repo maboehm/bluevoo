@@ -31,3 +31,12 @@ $stable: #5AAAFA;
 auto-complete {
   z-index: 100;
 }
+
+.toast- {
+  &success {
+    background-color: #4B8400 !important;
+  }
+  $error {
+    background-color: #E71D32 !important;
+  }
+}

@@ -1,6 +1,8 @@
 <ion-view view-title="Karte">
   <ion-content>
-    <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+    <ui-gmap-google-map center="map.center" zoom="map.zoom">
+      <ui-gmap-marker coords="myPosition" idKey="'pos'"></ui-gmap-marker>
+    </ui-gmap-google-map>
 
     <hr>
     <button class="button" ng-click="test()">Teste mich</button>

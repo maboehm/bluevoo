@@ -41,8 +41,8 @@ angular.module('bluevoo.services')
       type: "user",
     };
     console.log( _.merge(user, template));
-    user.businessUnit = user.businessUnit[0];
-    user.ibmLocation = user.ibmLocation[0];
+    user.businessUnit = angular.isString(user.businessUnit) ? user.businessUnit : user.businessUnit[0];
+    user.ibmLocation = angular.isString(user.ibmLocation) ? user.ibmLocation : user.ibmLocation[0];
 
     $http.post(c.url, _.merge(user, template)).then(function(response) {
       $cookies.put('userId', response.data.id);

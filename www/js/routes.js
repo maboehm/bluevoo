@@ -33,6 +33,15 @@ angular.module('bluevoo').config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+    .state('app.Camera', {
+      url: '/camera',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/camera.html',
+          controller: 'CameraCtrl'
+        }
+      }
+    })
     .state('app.map.login', {
       url: '/login'
     })

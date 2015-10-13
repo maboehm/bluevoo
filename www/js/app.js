@@ -8,6 +8,7 @@ angular.module('bluevoo', [
   'uiGmapgoogle-maps',
   'ionic-toast',
   'toastr',
+  'ngCordova',
 
   'bluevoo.controllers',
   'bluevoo.services',

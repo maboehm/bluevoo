@@ -78,12 +78,12 @@ angular.module('bluevoo.controllers')
   });
 
   modalScope.checkTag = function(tag) {
-    modelScope.addNew = false;
+    /*modalScope.addNew = false;
     if (_filter(modalScope.availableTags, function(location) {
       return location === tag;
     }).length === 0) {
       modelScope.addNew = true;
-    }
+    }*/
 
     return modalScope.tags.tags ? modalScope.tags.tags.length !== 1 : true;
   };

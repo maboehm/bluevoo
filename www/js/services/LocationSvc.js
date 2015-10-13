@@ -39,10 +39,14 @@ angular.module('bluevoo.services')
     return deferred.promise;
   };
 
+  _this.getCheckinForUser = function(id) {
+    return $http.get(c.url + '_design/design/_view/allCheckinsPerUser?key="' + id + '"');
+  };
+
   function removeOldCheckin() {
     var deferred = $q.defer();
 
-    $http.get(c.url + '_design/design/_view/allCheckinsPerUser?key="' + $rootScope.userId + '"').then(function(response) {
+    _this.getCheckinForUser($rootScope.userId).then(function(response) {
       console.log(response);
       if (response.data.rows.length === 0) {
         return deferred.resolve();

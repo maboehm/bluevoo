@@ -36,8 +36,17 @@ angular.module('bluevoo').config(function($stateProvider, $urlRouterProvider) {
     .state('app.map.login', {
       url: '/login'
     })
+    .state('app.myProfile', {
+      url: '/my-profile',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/my-profile.html',
+          controller: 'MyProfileCtrl'
+        }
+      }
+    })
     .state('app.profile', {
-      url: '/profile',
+      url: '/profile/:id',
       views: {
         'menuContent': {
           templateUrl: 'templates/profile.html',

@@ -9,11 +9,9 @@
       <ion-nav-buttons side="right">
         <button class="button button-stable" ng-click="signup()" ng-hide="userId">
           <i class="icon ion-log-in"></i>
-          Create Profile
         </button>
-        <button class="button button-stable" ui-sref="app.profile" ng-show="userId">
+        <button class="button button-stable" ui-sref="app.myProfile" ng-show="userId">
           <i class="icon ion-person"></i>
-          {{user.username}}
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>

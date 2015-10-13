@@ -2,6 +2,42 @@ angular.module('bluevoo.services')
 
 .service('LocationSvc', function($http, $q, $rootScope, TagSvc, c) {
   var _this = this;
+  _this.nearbyUsers = [];
+
+  function getAllCheckIns() {
+    var deferred = $q.defer();
+
+    $http.get(c.url + '_design/design/_view/allCheckins').then(function(response) {
+      deferred.resolve(response.data.rows);
+    }, function(error) {
+      deferred.reject();
+    });
+
+    return deferred.promise;
+  }
+
+  function matchCheckinsWithLocations(checkins, locations) {
+    var yesterday = new Date().getTime() - 86400000;
+    return _.map(_.filter(checkins, function(checkin) {
+      return checkin.value.timestamp*1 > yesterday;
+    }), function(checkin) {
+      var location = _.filter(locations, function(location) {
+        return location.id === checkin.value.location_id;
+      })[0];
+      checkin.value.coords = location.value.coords;
+      return checkin;
+    });
+  }
+
+  _this.getNearbyCheckins = function() {
+    var deferred = $q.defer();
+    getAllCheckIns().then(function(checkins) {
+      deferred.resolve(matchCheckinsWithLocations(checkins, TagSvc.locations.ibm.concat(TagSvc.locations.customer).concat(TagSvc.locations.hotel)));
+    }, function() {
+      deferred.reject();
+    });
+    return deferred.promise;
+  };
 
   function removeOldCheckin() {
     var deferred = $q.defer();

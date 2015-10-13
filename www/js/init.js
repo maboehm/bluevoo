@@ -1,6 +1,11 @@
 angular.module('bluevoo')
   .run(function($ionicPlatform, $rootScope, $cookies, TagSvc, $geolocation, UserSvc) {
-    $rootScope.map = {};
+    $rootScope.map = {
+      center: {
+        latitude: 50,
+        longitude: 9
+      }
+    };
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -21,10 +26,14 @@ angular.module('bluevoo')
     TagSvc.init();
     $geolocation.getCurrentPosition({
       timeout: 60000,
-      enableHighAccuracy: true
+      enableHighAccuracy: false
     }).then(function(position) {
-      $rootScope.map.center = _.pick(position.coords, ['latitude', 'longitude']);
+      console.log(position);
+      $rootScope.map.center.latitude = position.coords.latitude;
+      $rootScope.map.center.longitude = position.coords.longitude;
       $rootScope.myPosition = angular.copy($rootScope.map.center);
+    }, function(error) {
+      console.log(error);
     });
   });
 

@@ -7,7 +7,7 @@ angular.module('bluevoo.directives')
       $scope.$on('show', function() {
         $timeout(function() {
           $element.find('input')[0].focus();
-        }, 50);
+        }, 500);
       });
     }
   };

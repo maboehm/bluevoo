@@ -59,6 +59,14 @@ angular.module('bluevoo.controllers')
     });
   };
 
+  $scope.changeProfilePic = function() {
+    CameraSvc.takePicture().then(function(image) {
+      // use image
+    }, function() {
+      toastr.error('Something went wrong');
+    });
+  };
+
   $scope.$on('$ionicView.beforeEnter', function() {
     if (!$scope.userId) {
       var alertPopup = $ionicPopup.alert({

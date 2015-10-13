@@ -31,6 +31,18 @@ angular.module('bluevoo.services')
     return deferred.promise;
   };
 
+  _this.getProfilePic = function(id) {
+    var deferred = $q.defer();
+    $http.get(c.url + '_design/design/_view/ImagePerUser?key=%22' + id + '%22').then(function(response) {
+      if (response.data.rows.length > 0) {
+        deferred.resolve(response.data.rows[0].value);
+      } else {
+        deferred.reject();
+      }
+    });
+    return deferred.promise;
+  };
+
   _this.getOwnProfile = function getOwnProfile() {
     return _this.getUser($rootScope.userId);
   };
@@ -40,7 +52,7 @@ angular.module('bluevoo.services')
     var template = {
       type: "user",
     };
-    console.log( _.merge(user, template));
+    console.log(_.merge(user, template));
     user.businessUnit = angular.isString(user.businessUnit) ? user.businessUnit : user.businessUnit[0];
     user.ibmLocation = angular.isString(user.ibmLocation) ? user.ibmLocation : user.ibmLocation[0];
 

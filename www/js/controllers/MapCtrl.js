@@ -1,6 +1,6 @@
 angular.module('bluevoo.controllers')
 
-.controller('MapCtrl', function(uiGmapGoogleMapApi, $scope, LocationSvc, TagSvc, $state) {
+.controller('MapCtrl', function(uiGmapGoogleMapApi, $scope, LocationSvc, TagSvc, $state, $timeout, $window) {
   angular.extend($scope.map, {
     zoom: 14
   });
@@ -21,4 +21,10 @@ angular.module('bluevoo.controllers')
   $scope.doClick = function() {
     $state.go('app.nearme');
   };
+
+  $scope.$on('$ionicView.enter', function() {
+    var evt = $window.document.createEvent('UIEvents');
+    evt.initUIEvent('resize', true, false, $window, 0);
+    $window.dispatchEvent(evt);
+  });
 });

@@ -11,9 +11,11 @@ angular.module('bluevoo.controllers')
     });
   };
   $scope.updateProfile = function updateProfile() {
-    UserSvc.updateUser($scope.existingUser).then(function() {
+    UserSvc.updateUser($scope.existingUser).then(function(user) {
        //ionicToast.show('Profile Updated Successfully.', 'bottom', false, 2500);
        toastr.success('Profile Updated Successfully');
+       $scope.existingUser = user;
+       $scope.existingUser._rev = user.rev;
     }, function() {
       toastr.error('Something went wrong');
     });

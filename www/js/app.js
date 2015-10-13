@@ -10,5 +10,6 @@ angular.module('bluevoo', [
   'toastr',
 
   'bluevoo.controllers',
-  'bluevoo.services'
+  'bluevoo.services',
+  'bluevoo.directives'
 ]);

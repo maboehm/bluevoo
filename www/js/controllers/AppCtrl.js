@@ -44,16 +44,18 @@ angular.module('bluevoo.controllers')
     modalScope.maxTags = 1;
     modalScope.tagCategory = 'Your Location';
     modalScope.tags.tags = $scope.newUser.ibmLocation;
-    availableTags = _.map(TagSvc.locations.ibm, function(location) {
+    availableTags = _.flatten(_.map(TagSvc.locations.ibm, function(location) {
       return location.value.name;
-    });
+    }));
+    $scope.$broadcast('show');
   };
   $scope.openBUTags = function openBUTags() {
     $scope.tagModal.show();
     modalScope.maxTags = 1;
     modalScope.tagCategory = 'Your Business Unit';
     modalScope.tags.tags = $scope.newUser.businessUnit;
-    availableTags = TagSvc.businessUnits;
+    availableTags = _.flatten(TagSvc.businessUnits);
+    $scope.$broadcast('show');
   };
 
   ////////////

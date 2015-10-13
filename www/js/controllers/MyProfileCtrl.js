@@ -26,12 +26,14 @@ angular.module('bluevoo.controllers')
     modalScope.tagCategory = 'Business Tags';
     modalScope.tags.tags = $scope.existingUser.businessTags;
     availableTags = TagSvc.businessTags;
+    $scope.$broadcast('show');
   };
   $scope.openPrivateTags = function openPrivateTags() {
     $scope.modal.show();
     modalScope.tagCategory = 'Private Tags';
     modalScope.tags.tags = $scope.existingUser.privateTags;
     availableTags = TagSvc.privateTags;
+    $scope.$broadcast('show');
   };
 
   $ionicModal.fromTemplateUrl('templates/autocomplete.html', {

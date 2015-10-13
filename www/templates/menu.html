@@ -10,7 +10,7 @@
         <button class="button button-stable" ng-click="signup()" ng-hide="userId">
           <i class="icon ion-log-in"></i>
         </button>
-        <button class="button button-stable" ui-sref="app.myProfile" ng-show="userId">
+        <button class="button button-stable" ng-show="userId" ui-sref="app.myProfile">
           <i class="icon ion-person"></i>
         </button>
       </ion-nav-buttons>
@@ -24,17 +24,17 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item href="#/app/checkin" menu-close>
+        <ion-item class="item-icon-left" href="#/app/checkin" menu-close>
+          <i class="icon ion-android-checkmark-circle"></i>
           Check-in
         </ion-item>
-        <ion-item href="#/app/nearme" menu-close>
-          People near me
+        <ion-item class="item-icon-left" href="#/app/nearme" menu-close>
+          <i class="icon ion-ios-people"></i>
+          IBMer near me
         </ion-item>
-        <ion-item href="#/app/map" menu-close>
+        <ion-item class="item-icon-left" href="#/app/map" menu-close>
+          <i class="icon ion-map"></i>
           Map
-        </ion-item>
-        <ion-item href="#/app/profile" menu-close>
-          Profile
         </ion-item>
       </ion-list>
     </ion-content>

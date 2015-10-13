@@ -3,19 +3,19 @@
     <form class="list list-inset" ng-submit="doCheckin()">
       <label class="item item-input item-select">
         <div class="input-label">
-          Standorttyp
+          Location Type
         </div>
         <select ng-model="checkin.type" ng-options="type for type in types"></select>
       </label>
 
       <label class="item item-input">
         <div class="input-label">
-          Ort
+          Location
         </div>
-        <input ng-click="openLocations()" ng-model="checkin.location" placeholder="Your Location" type="text">
+        <input class="location-input" ng-click="openLocations()" ng-model="checkin.location" placeholder="Your Location" type="text">
       </label>
 
-      <button class="button button-block button-balanced" type="submit">Check-In!</button>
+      <button class="button button-block button-stable" type="submit">Check-In</button>
     </form>
   </ion-content>
 </ion-view>

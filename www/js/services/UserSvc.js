@@ -38,8 +38,11 @@ angular.module('bluevoo.services')
   _this.updateUser = function updateUser(user) {
     var deferred = $q.defer();
     var template = {
-      type: "user2",
+      type: "user",
     };
+    console.log( _.merge(user, template));
+    user.businessUnit = user.businessUnit[0];
+    user.ibmLocation = user.ibmLocation[0];
 
     $http.post(c.url, _.merge(user, template)).then(function(response) {
       $cookies.put('userId', response.data.id);

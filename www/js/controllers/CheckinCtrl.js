@@ -17,6 +17,7 @@ angular.module('bluevoo.controllers')
     availableTags = _.map(TagSvc.locations[$scope.checkin.type.toLowerCase()], function(location) {
       return location.value.name;
     });
+    $scope.$broadcast('show');
   };
 
   $ionicModal.fromTemplateUrl('templates/autocomplete.html', {

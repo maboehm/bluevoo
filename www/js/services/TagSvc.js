@@ -1,8 +1,3 @@
-/**
- * https://9b8ae9df-db6e-44dc-a427-4ef7f194ff97-bluemix.cloudant.com/bluevoo/_design/design/_view/allLocations
-
-6:36:56 PM: https://9b8ae9df-db6e-44dc-a427-4ef7f194ff97-bluemix.cloudant.com/bluevoo/_design/design/_view/allLocations?q=location:ibm
- */
 angular.module('bluevoo.services')
 
 .service('TagSvc', function($http, c) {

@@ -1,5 +1,5 @@
 angular.module('bluevoo')
-  .run(function($ionicPlatform, $rootScope, $cookies, TagSvc, $geolocation) {
+  .run(function($ionicPlatform, $rootScope, $cookies, TagSvc, $geolocation, UserSvc) {
     $rootScope.map = {};
     $ionicPlatform.ready(function() {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -15,6 +15,9 @@ angular.module('bluevoo')
       }
     });
     $rootScope.userId = $cookies.get('userId');
+    UserSvc.getUser($rootScope.userId).then(function(user) {
+      $rootScope.user = user;
+    });
     TagSvc.init();
     $geolocation.getCurrentPosition({
       timeout: 60000,

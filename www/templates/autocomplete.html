@@ -6,7 +6,7 @@
     </div>
   </ion-header-bar>
   <ion-content>
-    <tags-input add-on-paste="true" ng-model="tags.tags">
+    <tags-input add-on-paste="true" ng-model="tags.tags" max-tags="{{maxTags}}" on-tag-adding="checkTag($tag)">
       <auto-complete min-length="1" source="loadSuggestions($query)"></auto-complete>
     </tags-input>
   </ion-content>

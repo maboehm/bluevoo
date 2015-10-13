@@ -16,6 +16,12 @@ angular.module('bluevoo.services')
     return deferred.promise;
   }
 
+  function getDistanceForCheckin(coords) {
+    var deltaX = Math.pow(coords.latitude - $rootScope.myPosition.latitude, 2);
+    var deltaY = Math.pow(coords.longitude - $rootScope.myPosition.longitude, 2);
+    return Math.pow(deltaX + deltaY, 0.5);
+  }
+
   function matchCheckinsWithLocations(checkins, locations) {
     var yesterday = new Date().getTime() - 86400000;
     return _.map(_.filter(checkins, function(checkin) {
@@ -25,6 +31,7 @@ angular.module('bluevoo.services')
         return location.id === checkin.value.location_id;
       })[0];
       checkin.value.coords = location.value.coords;
+      checkin.value.distance = getDistanceForCheckin(checkin.value.coords);
       return checkin;
     });
   }
@@ -32,7 +39,8 @@ angular.module('bluevoo.services')
   _this.getNearbyCheckins = function() {
     var deferred = $q.defer();
     getAllCheckIns().then(function(checkins) {
-      deferred.resolve(matchCheckinsWithLocations(checkins, TagSvc.locations.ibm.concat(TagSvc.locations.customer).concat(TagSvc.locations.hotel)));
+      _this.nearbyUsers = matchCheckinsWithLocations(checkins, TagSvc.locations.ibm.concat(TagSvc.locations.customer).concat(TagSvc.locations.hotel));
+      deferred.resolve(_this.nearbyUsers);
     }, function() {
       deferred.reject();
     });

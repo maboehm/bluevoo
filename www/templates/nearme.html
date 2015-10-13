@@ -1,8 +1,19 @@
 <ion-view view-title="Near me">
   <ion-content>
-    <h1>People near me</h1>
-    <p>
-      {{description}}
-    </p>
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="load()">
+  </ion-refresher>
+    <div class="list">
+      <a class="item item-avatar" ng-repeat="checkin in nearme" ui-sref="app.profile({id: checkin.value.user_id})">
+        <img src="img/profile.jpg">
+        <h2>{{checkin.value.username}}</h2>
+        <span class="item-note">
+          {{(checkin.value.distance * 111).toFixed(2) + 'km'}}
+        </span>
+        <p>{{checkin.value.locationname}}</p>
+      </a>
+    </div>
+
   </ion-content>
 </ion-view>

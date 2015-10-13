@@ -1,10 +1,14 @@
 <ion-view view-title="Profile">
   <ion-content>
+    <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="load()">
+  </ion-refresher>
     <a class="item item-thumbnail-left" href="#">
       <img src="img/profile.jpg">
-      <h2>{{user.username}}</h2>
-      <p>{{user.businessUnit[0]}}</p>
-      <p>{{user.ibmLocation[0]}}</p>
+      <h2>{{user.username || user.name}}</h2>
+      <p>{{user.businessUnit.length === 1 ? user.businessUnit[0] : user.businessUnit}}</p>
+      <p>{{user.ibmLocation.length === 1 ? user.ibmLocation[0] : user.ibmLocation}}</p>
     </a>
     <div class="list list-inset">
       <a class="item item-icon-left item-icon-right" href="{{'tel:' + user.telephone}}">
@@ -14,14 +18,14 @@
       </a>
       <a class="item item-icon-left">
         <i class="icon ion-pricetags"></i>
-        <p>{{user.businessTags}}</p>
-        <p>{{user.privateTags}}</p>
+        <p ng-show="user.businessTags">{{user.businessTags}}</p>
+        <p ng-show="user.privateTags">{{user.privateTags}}</p>
       </a>
       <a class="item item-icon-left">
         <i class="icon ion-location"></i>
         {{checkin.value.locationname}}
       </a>
     </div>
-    <button class="button button-block button-stable" href="{{'tel:' + user.telephone}}">Call {{user.username.split(' ')[0]}}</button>
+    <button ng-disabled="user.telephone==='No phone number'" class="button button-block button-stable" href="{{'tel:' + user.telephone}}">Call {{user.username.split(' ')[0]}}</button>
   </ion-content>
 </ion-view>

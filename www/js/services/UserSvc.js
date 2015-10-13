@@ -19,6 +19,9 @@ angular.module('bluevoo.services')
 
     $http.get(c.url + id)
       .then(function success(response) {
+        if (id === $rootScope.userId) {
+          $rootScope.user = response.data;
+        }
         deferred.resolve(response.data);
       }, function onError(err) {
         console.log(err);

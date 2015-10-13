@@ -2,7 +2,7 @@ angular.module('bluevoo.services')
 
 .service('TagSvc', function($http, c) {
   var _this = this;
-  var locationTypes = ['ibm', 'customer'];
+  var locationTypes = ['ibm', 'customer', 'hotel'];
   var tagTypes = [
     {
       name: 'businessUnits',

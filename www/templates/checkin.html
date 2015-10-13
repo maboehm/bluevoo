@@ -8,12 +8,11 @@
         <select ng-model="checkin.type" ng-options="type for type in types"></select>
       </label>
 
-      <label class="item item-input item-select">
+      <label class="item item-input">
         <div class="input-label">
           Ort
         </div>
-        <select ng-model="checkin.place" ng-change="placeChanged()" ng-options="place for place in places">
-        </select>
+        <input ng-click="openLocations()" ng-model="checkin.location" placeholder="Your Location" type="text">
       </label>
 
       <button class="button button-block button-balanced" type="submit">Check-In!</button>
